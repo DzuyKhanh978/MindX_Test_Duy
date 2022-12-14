@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tong cac so nguyen tu tu a -> b</title>
+</head>
+
+<body>
+    <div>
+        <label for="a">Input a:</label>
+        <input type="text" name="a" id="a-input">
+    </div>
+    <div>
+        <label for="b">Input b:</label>
+        <input type="text" name="b" id="b-input">
+    </div>
+    <button onclick="myFunction()">Submit</button>
+    <p>Các số nguyên tố trong khoảng từ <span id="avalue"></span> - <span id="bvalue"></span> là: <span
+            id="all-values"></span></p>
+    <p>Output = <span id="sum"></span></p>
+</body>
+<script>
+    function myFunction() {
+        var a = parseInt(document.getElementById("a-input").value)
+        var b = parseInt(document.getElementById("b-input").value)
+        document.getElementById("avalue").textContent = a
+        document.getElementById("bvalue").textContent = b
+        allPrimes = []
+        for (let i = a; i <= b; i++) {
+            let flag = 0;
+            for (let j = 2; j < i; j++) {
+                if (i % j == 0) {
+                    flag = 1;
+                    break;
+                }
+            }
+            if (i > 1 && flag == 0) {
+                allPrimes.push(i)
+            }
+        }
+        console.log(allPrimes)
+        document.getElementById("all-values").textContent = allPrimes
+        document.getElementById("sum").textContent = allPrimes.reduce((a, b) => a + b, 0)
+    }
+</script>
+
+</html>
